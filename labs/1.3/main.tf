@@ -32,8 +32,8 @@ resource "azurerm_storage_account" "lab" {
 }
 
 resource "azurerm_windows_function_app" "lab" {
-  //name                      = "lab${random_id.lab.dec}demo"
-  ame                      = "lab${random_id.lab.dec}"
+  name                      = "lab${random_id.lab.dec}demo"
+  //name                      = "lab${random_id.lab.dec}"
   location                  = "${azurerm_resource_group.lab.location}"
   resource_group_name       = "${azurerm_resource_group.lab.name}"
   service_plan_id           = "${azurerm_service_plan.lab.id}"
