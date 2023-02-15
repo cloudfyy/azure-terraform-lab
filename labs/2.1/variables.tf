@@ -1,7 +1,9 @@
-variable "sku-tier" {
-    type = "string"
+variable "sku_name" {
+  type = string
+  default = "P1v2"
 }
 
-variable "sku-size" {
-    type = "string"
+variable "storage_account_reqplication_type" {
+  type = string
+  default = "LRS"
 }

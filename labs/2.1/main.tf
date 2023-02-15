@@ -1,10 +1,5 @@
-provider "azurerm" {
-  version = "1.22"
-}
 
-provider "random" {
-  version = "1.3"
-}
+
 resource "azurerm_resource_group" "lab" {
   name     = "lab-2-1"
   location = "northeurope"
@@ -18,16 +13,14 @@ resource "random_id" "lab" {
   byte_length = 2
 }
 
-resource "azurerm_app_service_plan" "lab" {
+resource "azurerm_service_plan" "lab" {
   name                = "lab-plan"
   location            = "${azurerm_resource_group.lab.location}"
   resource_group_name = "${azurerm_resource_group.lab.name}"
-  kind                = "FunctionApp"
+  //kind                = "FunctionApp"
 
-  sku {
-    tier = "${var.sku-tier}"
-    size = "${var.sku-size}"
-  }
+  os_type             = "Windows"
+  sku_name            = "${var.sku_name}"
 }
 
 resource "azurerm_storage_account" "lab" {
@@ -35,18 +28,21 @@ resource "azurerm_storage_account" "lab" {
   resource_group_name      = "${azurerm_resource_group.lab.name}"
   location                 = "${azurerm_resource_group.lab.location}"
   account_tier             = "Standard"
-  account_replication_type = "LRS"
+  account_replication_type = "${var.storage_account_reqplication_type}"
 }
 
-resource "azurerm_function_app" "lab" {
+resource "azurerm_windows_function_app" "lab" {
   name                      = "lab${random_id.lab.dec}"
+  //name                      = "lab${random_id.lab.dec}"
   location                  = "${azurerm_resource_group.lab.location}"
   resource_group_name       = "${azurerm_resource_group.lab.name}"
-  app_service_plan_id       = "${azurerm_app_service_plan.lab.id}"
-  storage_connection_string = "${azurerm_storage_account.lab.primary_connection_string}"
-  
-  version = "~2"
+  service_plan_id           = "${azurerm_service_plan.lab.id}"
+  storage_account_name      = azurerm_storage_account.lab.name
+  storage_account_access_key= azurerm_storage_account.lab.primary_access_key
 
-  app_settings {
+  site_config {}
+
+  app_settings = {
+      //ABC = "XYZ"
   }
 }
