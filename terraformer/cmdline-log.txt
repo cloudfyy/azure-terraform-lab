@@ -1,1 +1,3 @@
 $Env:ARM_SUBSCRIPTION_ID = '595c5281-dd90-4ddf-9a98-e874a28529d0'
+terraform init
+terraformer import azure -r * -R data
