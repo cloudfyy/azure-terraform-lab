@@ -9,16 +9,14 @@ Now we have created a resource group lets take a look at adding some resources t
 You will notice, inside main.tf, I have already added the basics from the previous lab included to help us move forward quickly. So let's get started by adding the service plan. As mentioned in the previous lab type this out to get a feel for the VSCode extensions.
 
 ```
-resource "azurerm_app_service_plan" "lab" {
+resource "azurerm_service_plan" "lab" {
   name                = "lab-plan"
   location            = "${azurerm_resource_group.lab.location}"
   resource_group_name = "${azurerm_resource_group.lab.name}"
-  kind                = "FunctionApp"
+  //kind                = "FunctionApp"
 
-  sku {
-    tier = "Dynamic"
-    size = "Y1"
-  }
+  os_type             = "Windows"
+  sku_name            = "P1v2"
 }
 ```
 
@@ -52,14 +50,15 @@ resource "azurerm_storage_account" "lab" {
   account_replication_type = "LRS"
 }
 
-resource "azurerm_function_app" "lab" {
+resource "azurerm_windows_function_app" "lab" {
   name                      = "lab${random_id.lab.dec}"
   location                  = "${azurerm_resource_group.lab.location}"
   resource_group_name       = "${azurerm_resource_group.lab.name}"
-  app_service_plan_id       = "${azurerm_app_service_plan.lab.id}"
-  storage_connection_string = "${azurerm_storage_account.lab.primary_connection_string}"
-  
-  version = "~2"
+  service_plan_id           = "${azurerm_service_plan.lab.id}"
+  storage_account_name      = azurerm_storage_account.lab.name
+  storage_account_access_key= azurerm_storage_account.lab.primary_access_key
+
+  site_config {}
 }
 ```
 

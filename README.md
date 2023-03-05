@@ -29,22 +29,27 @@ This session will provider an overview of the different options available for pr
 
 ### Run as ...
 
-- [Lab 4.0 - Silently run](/labs/4.0/README.md)
-- [Lab 4.1 - Shared state](/labs/4.1/README.md)
+- [Lab 4.0 - Silently run (not use)](/labs/4.0/README.md)
+- [Lab 4.1 - Shared state (not use)](/labs/4.1/README.md)
 
 ### Working as a team
 
-- [Lab 5.0 - Variable Groups](/labs/5.0/README.md)
-- [Lab 5.1 - CI / CD Pipeline](/labs/5.1/README.md)
+- [Lab 5.0 - Variable Groups (not use)](/labs/5.0/README.md)
+- [Lab 5.1 - CI / CD Pipeline (not use)](/labs/5.1/README.md)
 
 ### Secure by default
 
-- [Lab 6.0 - Managed Service Identity with Key Vault](/labs/6.0/README.md)
+- [Lab 6.0 - Managed Service Identity with Key Vault (not use)](/labs/6.0/README.md)
 
 ### ARM within Terraform, not Terraform within ARM.
 
-- [Lab 7.0 - Using ARM to plug the gaps](/labs/7.0/README.md)
+- [Lab 7.0 - Using AzAPI to plug the gaps](/labs/7.0/README.md)
+- [Lab 7.0 - Using ARM to plug the gaps](/labs/7.1/README.md)
 
-### Congifure 3rd Partry resources on Azure
+### Congifure Kubernetes Partry resources on Azure
 
-- [Lab 8.0 - Configuring Kubernetes]()
+- [Lab 8.0 - Configuring Kubernetes ](/labs/8.0/README.md)
+
+## Terraformer on Azure
+
+- [Lab Terraformer - Configuring Kubernetes ](/labs/terraformer/README.md)

@@ -8,11 +8,18 @@ In this directory you will see a file named "main.tf".  Open "main.tf" as this w
 
 ## Step 1 - Providers
 
-Let's add the AzureRM resource provider of a specific version. To do this add the following to main.tf
+Let's add the AzureRM resource provider of a specific version. To do this add the following to version.tf
 
 ```
-provider "azurerm" {
-  version = "~> 1.30.1"
+terraform {
+  required_providers {
+    azurerm = {
+      source  = "hashicorp/azurerm"
+      version = ">= 2.96.0"
+    }
+
+    
+  }
 }
 ```
 
@@ -32,6 +39,8 @@ Now we have set up the providers we need, we will now create our resource group 
 value for the life span of our resource group.
 
 While you could easily copy and paste the code example below trying typing it out and get a feel of the VSCode extensions.
+
+In main.tf:
 
 ```
 resource "azurerm_resource_group" "lab" {

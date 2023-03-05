@@ -19,14 +19,15 @@ terraform apply
 So we know from the previous lab this is what our current function looks like:
 
 ```
-resource "azurerm_function_app" "lab" {
+resource "azurerm_windows_function_app" "lab" {
   name                      = "lab${random_id.lab.dec}"
   location                  = "${azurerm_resource_group.lab.location}"
   resource_group_name       = "${azurerm_resource_group.lab.name}"
-  app_service_plan_id       = "${azurerm_app_service_plan.lab.id}"
-  storage_connection_string = "${azurerm_storage_account.lab.primary_connection_string}"
+  service_plan_id           = "${azurerm_service_plan.lab.id}"
+  storage_account_name      = azurerm_storage_account.lab.name
+  storage_account_access_key= azurerm_storage_account.lab.primary_access_key
   
-  version = "~2"
+ 
 
   app_settings = {
     ABC = "XYZ"
