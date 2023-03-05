@@ -44,7 +44,7 @@ This session will provider an overview of the different options available for pr
 ### ARM within Terraform, not Terraform within ARM.
 
 - [Lab 7.0 - Using AzAPI to plug the gaps](/labs/7.0/README.md)
-- [Lab 7.0 - Using ARM to plug the gaps](/labs/7.1/README.md)
+- [Lab 7.1 - Using ARM to plug the gaps](/labs/7.1/README.md)
 
 ### Congifure Kubernetes Partry resources on Azure
 
